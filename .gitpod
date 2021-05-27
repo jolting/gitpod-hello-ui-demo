@@ -1,6 +1,13 @@
 image:
   file: Dockerfile
-checkoutLocation: ~/
 ports:
 - port: 6080
 tasks:
+- init: >
+  chmod 755 code/chromium_git/update.sh
+  mkdir code/automate
+  cd code/automate 
+  wget https://bitbucket.org/chromiumembedded/cef/raw/master/tools/automate/automate-git.py
+  cd ../..
+  chmod +x code/chromium_git/chromium/src/cef/create.sh
+  
